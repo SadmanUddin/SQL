@@ -1,4 +1,4 @@
-use insertdatasql;  -- use the data from insertdata database.
+use startersql;  -- use the data from insertdata database.
 
 select * from user; -- take all the data from users.
 
