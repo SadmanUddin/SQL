@@ -61,11 +61,12 @@ alter table users modify column name varchar(150) not null;
 --adding a check constraint so that no date is lesser than 1900
 alter table users add constraint chk_dob check (date_of_birth>'1900-10-10');
 
---changing an existing column created at from default currenttime to null
+--changing an existing column created at from default currenttime to null and inserting data
 alter table users modify column created_at timestamp null; 
 insert into users (name,email,gender,date_of_birth,salary) values ('uddin3','uddin1@gmail3.com','male','2003-10-24',100000);
 
 --changing an existing column created at from null to default currentime
+alter table users modify column created_at timestamp default current_timestamp;
 
 
 
