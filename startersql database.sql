@@ -1,4 +1,4 @@
-use startersql;  -- use the data from insertdata database.
+use insertsql;  -- use the data from insertdata database.
 
 select * from user; -- take all the data from users.
 
@@ -104,3 +104,7 @@ select salary, mod(salary,23) as remaider from users;
 
 --If function
 select name,gender, if(gender = "female","yes","no") from users;
+
+-- using a foreign key and adding addresses
+select * from addresses;
+delete from addresses where id = 4;
