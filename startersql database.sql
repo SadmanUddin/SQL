@@ -108,3 +108,9 @@ select name,gender, if(gender = "female","yes","no") from users;
 -- using a foreign key and adding addresses
 select * from addresses;
 delete from addresses where id = 4;
+
+-- adding both user and addresses by using their id city and state only
+select users.name , addresses.city, addresses.state from users inner join addresses on users.id = addresses.user_id;
+
+-- selecting users table as a priority and adding addresses in database by using left join command
+select users.name , addresses.city, addresses.state, addresses.id as addresses_id from users left join addresses on users.id = addresses.user_id;
