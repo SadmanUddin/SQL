@@ -67,3 +67,40 @@ insert into users (name,email,gender,date_of_birth,salary) values ('uddin3','udd
 
 -- changing an existing column created at from null to default currentime
 alter table users modify column created_at timestamp default current_timestamp;
+
+-- counting the total rows of database
+select count(*) from users;
+
+-- counting the total rows of database where gender is male
+select count(*) from users where gender ="male";
+
+--min and max salary from database and storing them in diff coloum
+select min(salary) as min_salary, max(salary) as max_salary from users;
+
+-- total and avg salary from database
+select sum(salary) as total_salary from users;
+select avg(salary) as avg_salary from users;
+
+--sorting the avg salary and grouping it by selecting gender
+select gender, avg(salary) as avg_salary from users group by gender;
+
+--selecting name and measuring their length by using length command
+select id,name, length(name) as name_length from users;
+
+--selecting name and measuring their name in lower and uppercase
+select id,name, lower(name), upper(name), length(name) as name_length from users;
+
+--using concat command to add extra letters to their name as username
+select id,name, lower(name), upper(name), concat(upper(name),"12345") as username, length(name) as name_length from users;
+
+--couting how many days a person is in the database
+select name, datediff(curdate(),date_of_birth) as days from users;
+
+--floor and round function
+select salary,round(salary) as rounded, floor(salary) as floored from users;
+
+-- to get a remainder 
+select salary, mod(salary,23) as remaider from users;
+
+--If function
+select name,gender, if(gender = "female","yes","no") from users;
