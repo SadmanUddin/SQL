@@ -116,3 +116,14 @@ select users.name , addresses.city, addresses.state from users inner join addres
 
 -- selecting users table as a priority and adding addresses in database by using left join command
 select users.name , addresses.city, addresses.state, addresses.id as addresses_id from users left join addresses on users.id = addresses.user_id;
+
+-- combining specific database into one
+select email , name from users
+union all
+select email , name from admin_table;
+
+--self joining
+select a.id, a.name as user_name, b.name as referred_by_name from users a inner join users b on a.referred_by_id = b.id;
+
+-- creating a new view of rich users for those who earns more than 70000
+create view doublerich_users as select * from users where salary > 70000;
