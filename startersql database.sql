@@ -1,6 +1,8 @@
 use insertsql;  -- use the data from insertdata database.
 
 select * from user; -- take all the data from users.
+select * from addresses;
+select * from admin_table;
 
 
 -- specific data selection from database(gender,name)
