@@ -127,3 +127,15 @@ select a.id, a.name as user_name, b.name as referred_by_name from users a inner 
 
 -- creating a new view of rich users for those who earns more than 70000
 create view doublerich_users as select * from users where salary > 70000;
+
+-- subqueries
+select * from users where salary >(select avg(salary) from users);
+
+-- subqueries nested using in
+select id,name,referred_by_id from users where referred_by_id in (select id from users where salary <(select avg(salary) from users));
+
+--using group by with count funtion to see the avg salary of gender and count each gender
+select gender, avg(salary), count(*) as "avg_salary" from users group by gender;
+
+-- using having function after group by
+select gender, avg(salary) as "avg_salary" , count(*) as "count"  from users  group by gender having avg_salary > 60400 ;
