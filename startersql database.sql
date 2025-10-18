@@ -139,3 +139,19 @@ select gender, avg(salary), count(*) as "avg_salary" from users group by gender;
 
 -- using having function after group by
 select gender, avg(salary) as "avg_salary" , count(*) as "count"  from users  group by gender having avg_salary > 60400 ;
+
+-- creating procedure and calling it by putting values in it
+
+delimiter $$
+create procedure sadmanusers(
+in s_name varchar(100),
+in s_email varchar(100),
+in s_gender enum('male','female','other'),
+in s_dob date,
+in s_salary int
+)
+begin insert into users(name,email,gender,date_of_birth,salary) values(s_name,s_email,s_gender,s_dob,s_salary);
+select * from users;
+end $$
+delimiter ;
+call sadmanusers('sahal','sahal@gmail.com','male','1986-10-24', 75000);
